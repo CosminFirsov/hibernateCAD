@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 08-feb-2017 16:18:38 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="hibernate.Coche" table="COCHE" schema="MOTOR" optimistic-lock="version">
+        <id name="cocheId" type="big_decimal">
+            <column name="COCHE_ID" precision="22" scale="0" />
+            <generator class="sequence" >
+                <param name="sequence">SEQ_COCHE</param>
+            </generator>
+        </id>
+        <many-to-one name="cliente" class="hibernate.Cliente" fetch="select">
+            <column name="CLIENTE_ID" precision="22" scale="0" not-null="true" />
+        </many-to-one>
+        <property name="marca" type="string">
+            <column name="MARCA" length="30" not-null="true" />
+        </property>
+        <property name="modelo" type="string">
+            <column name="MODELO" length="30" not-null="true" />
+        </property>
+        <property name="matricula" type="string">
+            <column name="MATRICULA" length="8" not-null="true" unique="true" />
+        </property>
+        <property name="itv" type="date">
+            <column name="ITV" length="7" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
